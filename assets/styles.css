@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+* { font-family: 'Rajdhani', sans-serif; }
+code, .mono, .dash-table-container { font-family: 'Share Tech Mono', monospace; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a1a; }
+::-webkit-scrollbar-thumb { background: #2a2a4a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3498db; }
+
+/* Sidebar item hover */
+.sidebar-item:hover {
+    background-color: rgba(52, 152, 219, 0.15) !important;
+    color: #ffffff !important;
+    border-left: 2px solid #3498db;
+}
+
+/* Details/Summary styling */
+details > summary { list-style-type: none; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before {
+    content: '\25B8  ';
+    color: #3498db;
+    font-size: 10px;
+}
+details[open] > summary::before {
+    content: '\25BE  ';
+}
+
+/* Card glow on hover */
+.glow-card {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glow-card:hover {
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.15);
+    border-color: rgba(52, 152, 219, 0.3) !important;
+}
+
+/* Tab hover */
+.tab-container .tab { transition: all 0.2s ease; }
+
+/* Subtle grid lines in the background */
+.main-content {
+    background-image:
+        linear-gradient(rgba(42, 42, 74, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 42, 74, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Pulsing dot for loading */
+.dash-spinner { filter: drop-shadow(0 0 6px #3498db); }
+
+/* Badge glow */
+.badge { letter-spacing: 0.5px; }
+
+/* DataTable styling overrides */
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* Body background */
+body {
+    background-color: #0f0f23 !important;
+}

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Dataset (6+ GB Splunk Attack Data - too large for GitHub)
+attack_techniques/
+
+# Bundled STIX data (25 MB - download via setup script)
+stix/enterprise-attack.json
+
+# Auto-generated DeTT&CT admin files (regenerated on first run)
+coverage/data_sources_admin.yml
+coverage/technique_admin.yml
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+nul
+
+# Claude Code temp files
+tmpclaude-*
+
+# Research documents (not source code)
+*.docx
+
+# Environment variables
+.env
+.env.local
