@@ -37,11 +37,15 @@ def graph_to_figure(G, title=''):
         return None, 600
 
     num_nodes = len(G.nodes())
-    k_value = max(3.5, 1.5 * num_nodes ** 0.45)
-    pos = nx.spring_layout(G, k=k_value, iterations=100, seed=42)
+    pos = _hierarchical_layout(G)
 
-    # Dynamic height: sqrt-scaled, caps at 2000px
-    fig_height = max(600, min(2000, 500 + int(80 * num_nodes ** 0.5)))
+    # Dynamic height based on the tallest layer (max nodes at any depth)
+    depth_counts = {}
+    for node_id in G.nodes():
+        x = pos[node_id][0]
+        depth_counts[x] = depth_counts.get(x, 0) + 1
+    max_layer_size = max(depth_counts.values()) if depth_counts else 1
+    fig_height = max(500, min(2000, 300 + max_layer_size * 50))
 
     traces = []
 
@@ -50,9 +54,22 @@ def graph_to_figure(G, title=''):
     for node_id, data in G.nodes(data=True):
         node_types[node_id] = data.get('entity_type', 'unknown')
 
+    # Compute aspect-ratio correction so arrow angles match visual direction.
+    # The plot's pixel width/height differ from the data coordinate ranges,
+    # which causes atan2 on raw data coords to produce visually wrong angles.
+    x_vals = [c[0] for c in pos.values()]
+    y_vals = [c[1] for c in pos.values()]
+    x_data_range = (max(x_vals) - min(x_vals)) or 1.0
+    y_data_range = (max(y_vals) - min(y_vals)) or 1.0
+    est_plot_w = 1100.0                # estimated pixel width of plot area
+    est_plot_h = max(fig_height - 70, 200)  # pixel height minus margins
+    sx = est_plot_w / x_data_range     # pixels per data-x unit
+    sy = est_plot_h / y_data_range     # pixels per data-y unit
+
     # Group edges by destination entity type so they toggle with the legend
     edge_groups = {}   # etype -> {x, y, labels}
     arrow_groups = {}  # etype -> {x, y, angles}
+    label_groups = {}  # etype -> {x, y, text}  (visible edge labels)
 
     for u, v, data in G.edges(data=True):
         x0, y0 = pos[u]
@@ -76,10 +93,21 @@ def graph_to_figure(G, title=''):
         frac = 0.78
         ax = x0 + frac * (x1 - x0)
         ay = y0 + frac * (y1 - y0)
-        angle_deg = 90 - math.degrees(math.atan2(y1 - y0, x1 - x0))
+        # Use pixel-space direction for correct visual angle
+        angle_deg = 90 - math.degrees(math.atan2((y1 - y0) * sy, (x1 - x0) * sx))
         arrow_groups[dst_type]['x'].append(ax)
         arrow_groups[dst_type]['y'].append(ay)
         arrow_groups[dst_type]['angles'].append(angle_deg)
+
+        # Edge label at midpoint, offset slightly above the line
+        if label_text:
+            if dst_type not in label_groups:
+                label_groups[dst_type] = {'x': [], 'y': [], 'text': []}
+            mx = (x0 + x1) / 2
+            my = (y0 + y1) / 2 + 0.2  # small upward offset
+            label_groups[dst_type]['x'].append(mx)
+            label_groups[dst_type]['y'].append(my)
+            label_groups[dst_type]['text'].append(label_text)
 
     # Edge line traces with hover-only labels
     for etype, edata in edge_groups.items():
@@ -117,6 +145,23 @@ def graph_to_figure(G, title=''):
                     color='rgba(52, 152, 219, 0.65)',
                     angle=adata['angles'],
                     line=dict(width=0),
+                ),
+                hoverinfo='none',
+                showlegend=False,
+                legendgroup=etype,
+            ))
+
+    # Edge label traces (visible text at midpoint of each edge)
+    for etype, ldata in label_groups.items():
+        if ldata['x']:
+            traces.append(go.Scatter(
+                x=ldata['x'], y=ldata['y'],
+                mode='text',
+                text=ldata['text'],
+                textfont=dict(
+                    size=9,
+                    color='rgba(255, 255, 255, 0.7)',
+                    family='Share Tech Mono, monospace',
                 ),
                 hoverinfo='none',
                 showlegend=False,
@@ -236,6 +281,90 @@ def graph_to_figure(G, title=''):
     )
 
     return fig, fig_height
+
+
+def _hierarchical_layout(G):
+    """Compute a left-to-right hierarchical layout for a directed graph.
+
+    Layers are assigned via longest-path from roots (topological order).
+    Nodes within each layer are ordered using the barycenter heuristic
+    to reduce edge crossings.  Cycles are broken before layering.
+    """
+    if not G.nodes():
+        return {}
+
+    # Work on a copy so we can remove cycle-causing edges
+    H = G.copy()
+
+    # Remove self-loops
+    H.remove_edges_from(nx.selfloop_edges(H))
+
+    # Break remaining cycles via DFS back-edge removal
+    while not nx.is_directed_acyclic_graph(H):
+        try:
+            cycle = nx.find_cycle(H, orientation='original')
+            # Remove the last edge in the cycle (back edge)
+            u, v, _ = cycle[-1]
+            H.remove_edge(u, v)
+        except nx.NetworkXNoCycle:
+            break
+
+    # Assign layers: each node's depth = longest path from any root
+    depth = {}
+    topo_order = list(nx.topological_sort(H))
+    for node in topo_order:
+        preds = list(H.predecessors(node))
+        if not preds:
+            depth[node] = 0
+        else:
+            depth[node] = max(depth.get(p, 0) for p in preds) + 1
+
+    # Ensure all original nodes have a depth (disconnected nodes)
+    for node in G.nodes():
+        if node not in depth:
+            depth[node] = 0
+
+    # Group nodes by layer
+    layers = {}
+    for node, d in depth.items():
+        layers.setdefault(d, []).append(node)
+    sorted_layer_keys = sorted(layers.keys())
+
+    # Barycenter ordering to reduce edge crossings (uses original graph edges)
+    prev_y = {}
+    for li, layer_key in enumerate(sorted_layer_keys):
+        layer_nodes = layers[layer_key]
+        if li == 0:
+            # Initial layer: sort by out-degree so busiest nodes are central
+            layer_nodes.sort(key=lambda n: -G.out_degree(n))
+        else:
+            # Order by average y-position of predecessors
+            def _bary(node):
+                preds = [p for p in G.predecessors(node) if p in prev_y]
+                if preds:
+                    return sum(prev_y[p] for p in preds) / len(preds)
+                return 0.0
+            layer_nodes.sort(key=_bary)
+        # Assign y positions centered at 0
+        n = len(layer_nodes)
+        for i, node in enumerate(layer_nodes):
+            prev_y[node] = (i - (n - 1) / 2.0)
+        layers[layer_key] = layer_nodes
+
+    # Build final positions: x = layer (left-to-right), y = slot
+    x_spacing = 2.0
+    y_spacing = 1.5
+
+    pos = {}
+    for layer_key in sorted_layer_keys:
+        x = layer_key * x_spacing
+        layer_nodes = layers[layer_key]
+        n = len(layer_nodes)
+        for i, node in enumerate(layer_nodes):
+            y = (i - (n - 1) / 2.0) * y_spacing
+            pos[node] = (x, y)
+
+    return pos
 
 
 def _zoom_range(pos, scale, axis):
