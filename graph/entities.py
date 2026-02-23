@@ -3,18 +3,11 @@ import re
 
 
 ENTITY_TYPES = {
-    'process':  {'color': '#e74c3c', 'symbol': 'diamond',       'size': 18},
+    'process':  {'color': '#e74c3c', 'symbol': 'diamond',      'size': 18},
     'file':     {'color': '#2ecc71', 'symbol': 'square',        'size': 14},
-    'host':     {'color': '#3498db', 'symbol': 'circle',        'size': 22},
-    'user':     {'color': '#f39c12', 'symbol': 'star',          'size': 16},
-    'ip':       {'color': '#9b59b6', 'symbol': 'triangle-up',   'size': 16},
-    'service':  {'color': '#1abc9c', 'symbol': 'pentagon',      'size': 14},
+    'network':  {'color': '#9b59b6', 'symbol': 'triangle-up',   'size': 16},
     'registry': {'color': '#e67e22', 'symbol': 'hexagon',       'size': 12},
     'driver':   {'color': '#34495e', 'symbol': 'bowtie',        'size': 14},
-    'hash':     {'color': '#95a5a6', 'symbol': 'cross',         'size': 10},
-    'api_call': {'color': '#d35400', 'symbol': 'hourglass',     'size': 14},
-    'resource': {'color': '#16a085', 'symbol': 'hexagon2',      'size': 14},
-    'dns':      {'color': '#8e44ad', 'symbol': 'diamond-tall',  'size': 12},
 }
 
 
@@ -32,7 +25,7 @@ def _node(entity_type, value, label=None):
 
 
 def _short_label(value, entity_type):
-    if entity_type in ('process', 'file', 'driver'):
+    if entity_type in ('process', 'file', 'driver', 'registry'):
         name = os.path.basename(value.strip().rstrip('\\').rstrip('/'))
         return name if name else value[:40]
     if len(value) > 50:
@@ -50,12 +43,6 @@ def extract_entities_and_edges(event, format_type):
     """Extract graph nodes and edges from a parsed event dict."""
     if format_type == 'xml_sysmon':
         return _extract_sysmon(event)
-    elif format_type == 'keyvalue':
-        return _extract_keyvalue(event)
-    elif format_type == 'json':
-        return _extract_json(event)
-    elif format_type == 'exchange':
-        return _extract_exchange(event)
     return [], []
 
 
@@ -64,30 +51,19 @@ def _extract_sysmon(event):
     edges = []
     eid = event.get('EventID', '')
 
-    computer = event.get('Computer', '')
-    host_node = _node('host', computer)
-    if host_node:
-        nodes.append(host_node)
-
     if eid == '1':  # Process Create
         image = event.get('Image', '')
         parent = event.get('ParentImage', '')
-        user = event.get('User', '')
 
         img_node = _node('process', image)
         par_node = _node('process', parent)
-        usr_node = _node('user', user)
 
-        for n in (img_node, par_node, usr_node):
+        for n in (img_node, par_node):
             if n:
                 nodes.append(n)
 
         if par_node and img_node:
-            edges.append(_edge(par_node[0], img_node[0], 'spawned', 'process_creation'))
-        if usr_node and img_node:
-            edges.append(_edge(usr_node[0], img_node[0], 'ran', 'execution'))
-        if img_node and host_node:
-            edges.append(_edge(img_node[0], host_node[0], 'on', 'host_activity'))
+            edges.append(_edge(par_node[0], img_node[0], 'ProcessCreate', 'process_creation'))
 
     elif eid == '3':  # Network Connection
         image = event.get('Image', '')
@@ -96,26 +72,24 @@ def _extract_sysmon(event):
         dst_port = event.get('DestinationPort', '')
 
         img_node = _node('process', image)
-        src_node = _node('ip', src_ip)
-        dst_node = _node('ip', dst_ip)
+        src_node = _node('network', src_ip)
+        dst_node = _node('network', dst_ip)
 
         for n in (img_node, src_node, dst_node):
             if n:
                 nodes.append(n)
 
         if img_node and dst_node:
-            label = f'connected:{dst_port}' if dst_port else 'connected'
+            label = f'NetworkConnection:{dst_port}' if dst_port else 'NetworkConnection'
             edges.append(_edge(img_node[0], dst_node[0], label, 'network'))
         if src_node and img_node:
-            edges.append(_edge(src_node[0], img_node[0], 'source', 'network'))
+            edges.append(_edge(src_node[0], img_node[0], 'NetworkConnection', 'network'))
 
     elif eid == '6':  # Driver Loaded
         driver = event.get('ImageLoaded', '')
         drv_node = _node('driver', driver)
         if drv_node:
             nodes.append(drv_node)
-        if host_node and drv_node:
-            edges.append(_edge(host_node[0], drv_node[0], 'loaded_driver', 'driver_load'))
 
     elif eid == '7':  # Image Loaded (DLL)
         image = event.get('Image', '')
@@ -126,9 +100,9 @@ def _extract_sysmon(event):
             if n:
                 nodes.append(n)
         if img_node and file_node:
-            edges.append(_edge(img_node[0], file_node[0], 'loaded', 'image_load'))
+            edges.append(_edge(img_node[0], file_node[0], 'ImageLoad', 'image_load'))
 
-    elif eid in ('8', '10'):  # CreateRemoteThread / ProcessAccess
+    elif eid == '10':  # ProcessAccess
         source = event.get('SourceImage', '')
         target = event.get('TargetImage', '')
         src_node = _node('process', source)
@@ -136,9 +110,8 @@ def _extract_sysmon(event):
         for n in (src_node, tgt_node):
             if n:
                 nodes.append(n)
-        label = 'injected_into' if eid == '8' else 'accessed'
         if src_node and tgt_node:
-            edges.append(_edge(src_node[0], tgt_node[0], label, 'process_interaction'))
+            edges.append(_edge(src_node[0], tgt_node[0], 'ProcessAccess', 'process_interaction'))
 
     elif eid == '11':  # File Create
         image = event.get('Image', '')
@@ -149,7 +122,7 @@ def _extract_sysmon(event):
             if n:
                 nodes.append(n)
         if img_node and file_node:
-            edges.append(_edge(img_node[0], file_node[0], 'created_file', 'file_creation'))
+            edges.append(_edge(img_node[0], file_node[0], 'FileCreate', 'file_creation'))
 
     elif eid in ('12', '13', '14'):  # Registry
         image = event.get('Image', '')
@@ -160,32 +133,7 @@ def _extract_sysmon(event):
             if n:
                 nodes.append(n)
         if img_node and reg_node:
-            edges.append(_edge(img_node[0], reg_node[0], 'modified_registry', 'registry'))
-
-    elif eid == '22':  # DNS Query
-        image = event.get('Image', '')
-        query = event.get('QueryName', '')
-        img_node = _node('process', image)
-        dns_node = _node('dns', query)
-        for n in (img_node, dns_node):
-            if n:
-                nodes.append(n)
-        if img_node and dns_node:
-            edges.append(_edge(img_node[0], dns_node[0], 'dns_query', 'dns'))
-
-    else:
-        # Generic sysmon: extract what we can
-        image = event.get('Image', '')
-        user = event.get('User', '')
-        img_node = _node('process', image) if image else None
-        usr_node = _node('user', user) if user else None
-        for n in (img_node, usr_node):
-            if n:
-                nodes.append(n)
-        if img_node and host_node:
-            edges.append(_edge(img_node[0], host_node[0], f'event_{eid}', 'activity'))
-        if usr_node and img_node:
-            edges.append(_edge(usr_node[0], img_node[0], 'associated', 'user_activity'))
+            edges.append(_edge(img_node[0], reg_node[0], 'RegistryEvent', 'registry'))
 
     return nodes, edges
 
@@ -217,9 +165,9 @@ def _extract_keyvalue(event):
             if n:
                 nodes.append(n)
         if host_node and svc_node:
-            edges.append(_edge(host_node[0], svc_node[0], 'installed_service', 'service_install'))
+            edges.append(_edge(host_node[0], svc_node[0], 'ServiceInstall', 'service_install'))
         if svc_node and file_node:
-            edges.append(_edge(svc_node[0], file_node[0], 'image_path', 'service_binary'))
+            edges.append(_edge(svc_node[0], file_node[0], 'ServiceInstall', 'service_binary'))
 
     elif event_code in ('4688', '592'):  # Process Create
         msg = event.get('Message', '')
@@ -233,9 +181,9 @@ def _extract_keyvalue(event):
             if n:
                 nodes.append(n)
         if par_node and proc_node:
-            edges.append(_edge(par_node[0], proc_node[0], 'spawned', 'process_creation'))
+            edges.append(_edge(par_node[0], proc_node[0], 'ProcessCreation', 'process_creation'))
         if usr_node and proc_node:
-            edges.append(_edge(usr_node[0], proc_node[0], 'ran', 'execution'))
+            edges.append(_edge(usr_node[0], proc_node[0], 'ProcessCreation', 'execution'))
 
     elif event_code in ('4624', '4625'):  # Logon Success/Failure
         msg = event.get('Message', '')
@@ -245,20 +193,20 @@ def _extract_keyvalue(event):
         if ip_node:
             nodes.append(ip_node)
 
-        label = 'logged_on' if event_code == '4624' else 'failed_logon'
+        label = 'LogonSuccess' if event_code == '4624' else 'LogonFailure'
         if usr_node and host_node:
             edges.append(_edge(usr_node[0], host_node[0], label, 'authentication'))
         if ip_node and host_node:
-            edges.append(_edge(ip_node[0], host_node[0], 'logon_source', 'network'))
+            edges.append(_edge(ip_node[0], host_node[0], label, 'network'))
 
     elif event_code == '4104':  # PowerShell Script Block
         if usr_node and host_node:
-            edges.append(_edge(usr_node[0], host_node[0], 'executed_script', 'script_execution'))
+            edges.append(_edge(usr_node[0], host_node[0], 'ScriptBlock', 'script_execution'))
 
     else:
         # Generic: connect user to host
         if usr_node and host_node:
-            edges.append(_edge(usr_node[0], host_node[0], f'event_{event_code}', 'activity'))
+            edges.append(_edge(usr_node[0], host_node[0], f'WinEvent{event_code}', 'activity'))
 
     return nodes, edges
 

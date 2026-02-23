@@ -157,26 +157,73 @@ def register_callbacks(app, technique_tree, data_dir, max_events, stix_data=None
 
         events = result.get('events', [])
 
-        # Build graph
+        # Build graphs
         graph_content = []
         if events:
-            G = build_graph(events, result['format'])
             import os
-            title = f"{technique_id} // {os.path.basename(file_path)}  [{len(G.nodes())} nodes | {len(G.edges())} edges]"
-            fig = graph_to_figure(G, title=title)
-            if fig is not None:
-                graph_content = [
-                    dcc.Graph(
-                        id='graph-display',
-                        figure=fig,
-                        config={
-                            'displayModeBar': True,
-                            'scrollZoom': False,
-                            'displaylogo': False,
-                        },
-                        style={'height': '600px'},
-                    ),
-                ]
+            base_name = os.path.basename(file_path)
+
+            # Full graph (all EIDs)
+            G_full = build_graph(events, result['format'])
+            title_full = f"{technique_id} // {base_name} — FULL  [{len(G_full.nodes())} nodes | {len(G_full.edges())} edges]"
+            fig_full, height_full = graph_to_figure(G_full, title=title_full)
+
+            # Simplified graph (process + network + true file only)
+            G_simple = build_graph(events, result['format'], allowed_eids={'1', '3', '10', '11'})
+            title_simple = f"{technique_id} // {base_name} — SIMPLIFIED  [{len(G_simple.nodes())} nodes | {len(G_simple.edges())} edges]"
+            fig_simple, height_simple = graph_to_figure(G_simple, title=title_simple)
+
+            has_full = fig_full is not None
+            has_simple = fig_simple is not None
+
+            if has_full or has_simple:
+                # Button bar for view mode switching
+                btn_style = {
+                    'fontSize': '10px', 'letterSpacing': '1px', 'padding': '4px 14px',
+                    'fontFamily': "'Share Tech Mono', monospace", 'border': '1px solid #2a2a4a',
+                    'marginRight': '4px',
+                }
+                controls = html.Div([
+                    dbc.Button('FULL', id='btn-view-full', active=True, size='sm',
+                               color='primary', outline=True, style=btn_style),
+                    dbc.Button('SIMPLIFIED', id='btn-view-simple', active=False, size='sm',
+                               color='primary', outline=True, style=btn_style),
+                    dbc.Button('SCROLL VIEW', id='btn-view-scroll', active=False, size='sm',
+                               color='primary', outline=True, style=btn_style),
+                ], style={'marginBottom': '10px'})
+
+                # Full graph panel
+                full_panel = html.Div(
+                    [dcc.Graph(
+                        id='graph-display-full',
+                        figure=fig_full,
+                        config={'displayModeBar': True, 'scrollZoom': True, 'displaylogo': False},
+                        style={'height': f'{height_full}px'},
+                    )] if has_full else [],
+                    id='graph-panel-full',
+                    style={'display': 'block'},
+                )
+
+                # Simplified graph panel
+                simple_panel = html.Div(
+                    [dcc.Graph(
+                        id='graph-display-simple',
+                        figure=fig_simple,
+                        config={'displayModeBar': True, 'scrollZoom': True, 'displaylogo': False},
+                        style={'height': f'{height_simple}px'},
+                    )] if has_simple else [],
+                    id='graph-panel-simple',
+                    style={'display': 'none'},
+                )
+
+                # Scroll wrapper containing both panels
+                scroll_wrapper = html.Div(
+                    [full_panel, simple_panel],
+                    id='graph-scroll-wrapper',
+                    style={'overflowX': 'hidden'},
+                )
+
+                graph_content = [controls, scroll_wrapper]
             else:
                 graph_content = [
                     html.Div(
@@ -302,6 +349,61 @@ def register_callbacks(app, technique_tree, data_dir, max_events, stix_data=None
                 SIDEBAR_STYLE,
                 True,
                 False,
+            )
+
+    # ---- Graph view mode callbacks ----
+    @app.callback(
+        Output('graph-view-mode', 'data'),
+        [Input('btn-view-full', 'n_clicks'),
+         Input('btn-view-simple', 'n_clicks'),
+         Input('btn-view-scroll', 'n_clicks')],
+        prevent_initial_call=True,
+    )
+    def set_graph_view_mode(full_clicks, simple_clicks, scroll_clicks):
+        ctx = callback_context
+        if not ctx.triggered:
+            return 'full'
+        btn_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        if btn_id == 'btn-view-simple':
+            return 'simple'
+        elif btn_id == 'btn-view-scroll':
+            return 'scroll'
+        return 'full'
+
+    @app.callback(
+        [Output('graph-panel-full', 'style'),
+         Output('graph-panel-simple', 'style'),
+         Output('graph-scroll-wrapper', 'style'),
+         Output('btn-view-full', 'active'),
+         Output('btn-view-simple', 'active'),
+         Output('btn-view-scroll', 'active')],
+        Input('graph-view-mode', 'data'),
+        prevent_initial_call=True,
+    )
+    def update_graph_view(mode):
+        if mode == 'simple':
+            return (
+                {'display': 'none'},
+                {'display': 'block'},
+                {'overflowX': 'hidden'},
+                False, True, False,
+            )
+        elif mode == 'scroll':
+            return (
+                {'display': 'inline-block', 'width': '100%', 'minWidth': '100%',
+                 'scrollSnapAlign': 'start', 'verticalAlign': 'top'},
+                {'display': 'inline-block', 'width': '100%', 'minWidth': '100%',
+                 'scrollSnapAlign': 'start', 'verticalAlign': 'top'},
+                {'overflowX': 'auto', 'whiteSpace': 'nowrap',
+                 'scrollSnapType': 'x mandatory'},
+                False, False, True,
+            )
+        else:  # full
+            return (
+                {'display': 'block'},
+                {'display': 'none'},
+                {'overflowX': 'hidden'},
+                True, False, False,
             )
 
 

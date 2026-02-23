@@ -148,6 +148,7 @@ def create_layout(technique_tree, dataset_stats=None, stix_data=None, visibility
         dcc.Store(id='selected-scenario', data=None),
         dcc.Store(id='selected-file-path', data=None),
         dcc.Store(id='current-view', data='techniques'),
+        dcc.Store(id='graph-view-mode', data='full'),
     ])
 
 
