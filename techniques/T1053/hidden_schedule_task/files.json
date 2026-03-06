@@ -1,0 +1,1 @@
+[{"name": "inno_schtask.log", "id": "inno_schtask", "has": ["info"]}, {"name": "security.log", "id": "security", "has": ["info", "detection", "table"]}]

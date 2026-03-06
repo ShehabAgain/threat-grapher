@@ -1,0 +1,1 @@
+[{"name": "4688_tscon_windows-security.log", "id": "4688_tscon_windows-security", "has": ["info", "detection", "table"]}, {"name": "remoteconnectionmanager.log", "id": "remoteconnectionmanager", "has": ["info", "detection", "table"]}, {"name": "tscon_windows-sysmon.log", "id": "tscon_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "msdtc_a_sec.log", "id": "msdtc_a_sec", "has": ["info", "detection", "table"]}, {"name": "msdtc_a_sysmon.log", "id": "msdtc_a_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "aws_cloudtrail.json", "id": "aws_cloudtrail", "has": ["info", "detection", "table"]}]

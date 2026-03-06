@@ -1,0 +1,1 @@
+[{"name": "kube_audit_create_node_port_service.json", "id": "kube_audit_create_node_port_service", "has": ["info", "detection", "table"]}]

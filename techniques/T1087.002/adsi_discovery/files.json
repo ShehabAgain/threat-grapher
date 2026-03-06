@@ -1,0 +1,1 @@
+[{"name": "windows-powershell-xml.log", "id": "windows-powershell-xml", "has": ["info", "detection", "table"]}, {"name": "windows-powershell-xml1.log", "id": "windows-powershell-xml1", "has": ["info", "detection", "table"]}, {"name": "windows-powershell-xml2.log", "id": "windows-powershell-xml2", "has": ["info", "detection", "table"]}]

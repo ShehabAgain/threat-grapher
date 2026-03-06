@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_dd_overwrite.log", "id": "auditd_proctitle_dd_overwrite", "has": ["info"]}, {"name": "linux_auditd_dd_overwrite.log", "id": "linux_auditd_dd_overwrite", "has": ["info"]}]

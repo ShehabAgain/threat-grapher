@@ -1,0 +1,1 @@
+[{"name": "capi2-operational.log", "id": "capi2-operational", "has": ["info", "detection", "table"]}, {"name": "sip_inventory.log", "id": "sip_inventory", "has": ["info"]}, {"name": "sip_windows-sysmon.log", "id": "sip_windows-sysmon", "has": ["info", "full", "detection", "table"]}]

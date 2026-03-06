@@ -1,0 +1,1 @@
+[{"name": "macos_list_firewall_rules.log", "id": "macos_list_firewall_rules", "has": ["info", "detection", "table"]}, {"name": "macos_network_discovery.log", "id": "macos_network_discovery", "has": ["info", "detection", "table"]}, {"name": "sysmon_linux.log", "id": "sysmon_linux", "has": ["info", "full", "simple", "detection", "table"]}]

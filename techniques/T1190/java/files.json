@@ -1,0 +1,1 @@
+[{"name": "confluence.log", "id": "confluence", "has": ["info"]}, {"name": "java.log", "id": "java", "has": ["info", "detection", "table"]}, {"name": "java_spawn_shell_nix.log", "id": "java_spawn_shell_nix", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "log4shell-nginx.log", "id": "log4shell-nginx", "has": ["info"]}]

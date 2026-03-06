@@ -1,0 +1,1 @@
+[{"name": "encode-windows-security.log", "id": "encode-windows-security", "has": ["info", "detection", "table"]}, {"name": "expand_windows-sysmon.log", "id": "expand_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "windows-sysmon.log", "id": "windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

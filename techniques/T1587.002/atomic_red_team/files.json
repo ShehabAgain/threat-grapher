@@ -1,0 +1,1 @@
+[{"name": "certblob_windows-sysmon.log", "id": "certblob_windows-sysmon", "has": ["info", "simple", "detection", "table"]}]

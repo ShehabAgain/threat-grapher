@@ -1,0 +1,1 @@
+[{"name": "4688_remcom_windows-security.log", "id": "4688_remcom_windows-security", "has": ["info", "detection", "table"]}, {"name": "remcom_windows-sysmon.log", "id": "remcom_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

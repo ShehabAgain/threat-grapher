@@ -1,0 +1,1 @@
+[{"name": "stream_dns.log", "id": "stream_dns", "has": ["info", "detection", "table"]}, {"name": "stream_events_zeek.log", "id": "stream_events_zeek", "has": ["info", "detection", "table"]}, {"name": "suricata_events.log", "id": "suricata_events", "has": ["info", "detection", "table"]}]

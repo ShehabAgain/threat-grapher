@@ -1,0 +1,1 @@
+[{"name": "logExcessiveTaskHost.log", "id": "logExcessiveTaskHost", "has": ["info", "detection", "table"]}, {"name": "logExcessiveWindowsTemp.log", "id": "logExcessiveWindowsTemp", "has": ["info", "detection", "table"]}]

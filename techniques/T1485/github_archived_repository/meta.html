@@ -1,0 +1,125 @@
+<div class="card-dark" style="border-left:3px solid #3498db;padding:15px">
+
+    
+    <div style="margin-bottom:8px">
+        <span style="color:#3498db;font-weight:700;font-size:20px;letter-spacing:1px;margin-right:10px">T1485</span>
+        
+        <span style="color:#e0e0e0;font-size:14px;font-weight:500;margin-right:10px">Data Destruction</span>
+        
+        
+        <span style="color:#9b59b6;font-size:14px;font-weight:500">// github_archived_repository</span>
+        
+        
+        
+        <span style="margin-left:10px;font-size:10px;font-weight:600;background:#e5a839;color:#fff;padding:2px 8px;border-radius:10px">VIS 2/5</span>
+        
+    </div>
+
+    
+    
+    
+    <p style="color:#b0b0b0;font-size:13px;line-height:1.5;border-left:2px solid #2a2a4a;padding-left:10px;margin-bottom:10px">Adversaries may destroy data and files on specific systems or in large numbers on a network to interrupt availability to systems, services, and network resources. Data destruction is likely to render stored data irrecoverable by forensic techniques through overwriting files or data on local and remote drives.(Citation: Symantec Shamoon 2012)(Citation: FireEye Shamoon Nov 2016)(Citation: Palo Alto Shamoon Nov 2016)(Citation: Kaspersky StoneDrill 2017)(Citation: Unit 42 Shamoon3 2018)(Citation: Talos Olympic Destroyer 2018) Common operating system file deletion commands such as <code>del</code> and <code>rm</code> often only remove pointers to files without wiping the contents of the files themselves, making the files recoverable by proper forensic methodology. This behavior is distinct from [Disk Content Wipe](https://attack.mitre.org/techniques/T1561/001) and [Disk Structure Wipe](https://attack.mitre.org/techniques/T1561/002) because individual files are destroyed rather than sections of a storage disk or the disk's logical structure.</p>
+    
+
+    
+    
+
+    
+    
+    <div style="margin-bottom:6px">
+        <span style="color:#f39c12;font-size:9px;letter-spacing:1px;margin-right:6px">TACTICS </span>
+        
+        <span style="background:#f39c12;color:#000;font-size:10px;padding:2px 8px;border-radius:10px;margin-right:6px;font-weight:600;letter-spacing:0.5px">Impact</span>
+        
+    </div>
+    
+
+    
+    
+
+    
+    
+    <div style="margin-top:8px">
+        <div style="margin-bottom:4px">
+            <span style="color:#3498db;font-size:9px;letter-spacing:1px">DATA COMPONENTS </span>
+            <span style="color:#888;font-size:10px;margin-left:6px;font-family:Share Tech Mono,monospace">(3/9 covered)</span>
+        </div>
+        <div style="background:#0a0a1a;border-radius:4px;padding:6px 10px;border:1px solid #2a2a4a">
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Snapshot: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Snapshot Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#2ecc71">[+]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Process: </span>
+                <span style="color:#2ecc71;font-size:11px;font-family:Share Tech Mono,monospace">Process Creation</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#2ecc71">[+]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">File: </span>
+                <span style="color:#2ecc71;font-size:11px;font-family:Share Tech Mono,monospace">File Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Image: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Image Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Instance: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Instance Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#2ecc71">[+]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">File: </span>
+                <span style="color:#2ecc71;font-size:11px;font-family:Share Tech Mono,monospace">File Modification</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Volume: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Volume Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Cloud Storage: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Cloud Storage Deletion</span>
+            </div>
+            
+            <div style="margin-bottom:2px">
+                
+                <span style="font-size:10px;margin-right:4px;color:#e74c3c">[-]</span>
+                
+                <span style="color:#888;font-size:11px;font-family:Share Tech Mono,monospace">Command: </span>
+                <span style="color:#e74c3c;font-size:11px;font-family:Share Tech Mono,monospace">Command Execution</span>
+            </div>
+            
+        </div>
+    </div>
+    
+
+</div>

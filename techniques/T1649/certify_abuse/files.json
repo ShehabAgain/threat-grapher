@@ -1,0 +1,1 @@
+[{"name": "certify_esc1_abuse_powershell.log", "id": "certify_esc1_abuse_powershell", "has": ["info", "detection", "table"]}, {"name": "certify_esc1_abuse_sysmon.log", "id": "certify_esc1_abuse_sysmon", "has": ["info", "simple", "detection", "table"]}, {"name": "certify_esc1_abuse_winsecurity.log", "id": "certify_esc1_abuse_winsecurity", "has": ["info", "detection", "table"]}]

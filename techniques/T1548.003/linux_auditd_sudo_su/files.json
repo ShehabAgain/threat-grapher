@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_sudo.log", "id": "auditd_proctitle_sudo", "has": ["info"]}, {"name": "linux_auditd_sudo_su.log", "id": "linux_auditd_sudo_su", "has": ["info"]}]

@@ -1,0 +1,1 @@
+[{"name": "text4shell.log", "id": "text4shell", "has": ["info", "detection", "table"]}, {"name": "text4shell_nginx.log", "id": "text4shell_nginx", "has": ["info"]}]

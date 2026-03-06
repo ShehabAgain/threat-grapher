@@ -1,0 +1,1 @@
+[{"name": "default_rdp.log", "id": "default_rdp", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "default_rdp_dropped.log", "id": "default_rdp_dropped", "has": ["info", "full", "simple", "detection", "table"]}]

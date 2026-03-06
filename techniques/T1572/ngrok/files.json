@@ -1,0 +1,1 @@
+[{"name": "ngrok_linux-sysmon.log", "id": "ngrok_linux-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "windows-sysmon.log", "id": "windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

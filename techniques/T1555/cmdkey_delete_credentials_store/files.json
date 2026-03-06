@@ -1,0 +1,1 @@
+[{"name": "cmdkey_del_sec.log", "id": "cmdkey_del_sec", "has": ["info", "detection", "table"]}, {"name": "cmdkey_del_sys.log", "id": "cmdkey_del_sys", "has": ["info", "full", "detection", "table"]}]

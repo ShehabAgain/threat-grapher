@@ -1,0 +1,1 @@
+[{"name": "4688_bitlockertogo_windows-security.log", "id": "4688_bitlockertogo_windows-security", "has": ["info", "detection", "table"]}, {"name": "bitlockertogo_windows-sysmon.log", "id": "bitlockertogo_windows-sysmon", "has": ["info", "full", "detection", "table"]}]

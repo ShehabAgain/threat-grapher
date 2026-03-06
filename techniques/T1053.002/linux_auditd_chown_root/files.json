@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_chown_root.log", "id": "auditd_proctitle_chown_root", "has": ["info"]}, {"name": "linux_auditd_chown_root.log", "id": "linux_auditd_chown_root", "has": ["info"]}]

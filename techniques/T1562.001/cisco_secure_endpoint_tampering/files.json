@@ -1,0 +1,1 @@
+[{"name": "service_stop.log", "id": "service_stop", "has": ["info", "detection", "table"]}, {"name": "sfc_tampering.log", "id": "sfc_tampering", "has": ["info", "full", "detection", "table"]}]

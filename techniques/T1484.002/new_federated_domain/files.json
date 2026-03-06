@@ -1,0 +1,1 @@
+[{"name": "azure-audit.log", "id": "azure-audit", "has": ["info", "detection", "table"]}]

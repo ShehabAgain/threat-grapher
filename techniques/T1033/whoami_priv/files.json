@@ -1,0 +1,1 @@
+[{"name": "whoami-priv-security.log", "id": "whoami-priv-security", "has": ["info", "detection", "table"]}, {"name": "whoami-priv-sysmon.log", "id": "whoami-priv-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

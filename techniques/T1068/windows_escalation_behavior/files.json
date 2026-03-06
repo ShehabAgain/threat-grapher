@@ -1,0 +1,1 @@
+[{"name": "windows_escalation_behavior_sysmon.log", "id": "windows_escalation_behavior_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

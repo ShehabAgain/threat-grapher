@@ -1,0 +1,1 @@
+[{"name": "kube_audit_get_secret.json", "id": "kube_audit_get_secret", "has": ["info", "detection", "table"]}]

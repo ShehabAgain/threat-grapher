@@ -1,0 +1,1 @@
+[{"name": "cloudtrail.json", "id": "cloudtrail", "has": ["info", "detection", "table"]}, {"name": "dns.log", "id": "dns", "has": ["info", "detection", "table"]}, {"name": "web_cloudfront_access.log", "id": "web_cloudfront_access", "has": ["info", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "windows-taskschedule.log", "id": "windows-taskschedule", "has": ["info", "detection", "table"]}, {"name": "windows-taskschedule_xml.log", "id": "windows-taskschedule_xml", "has": ["info", "detection", "table"]}]

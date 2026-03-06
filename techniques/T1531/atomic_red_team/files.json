@@ -1,0 +1,1 @@
+[{"name": "security.log", "id": "security", "has": ["info", "detection", "table"]}, {"name": "sysmon.log", "id": "sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "rar_sec.log", "id": "rar_sec", "has": ["info", "detection", "table"]}, {"name": "rar_sys.log", "id": "rar_sys", "has": ["info", "full", "detection", "table"]}]

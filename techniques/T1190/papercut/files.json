@@ -1,0 +1,1 @@
+[{"name": "papercutng-app-spawn_windows-sysmon.log", "id": "papercutng-app-spawn_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "papercutng-suricata.log", "id": "papercutng-suricata", "has": ["info", "detection", "table"]}, {"name": "server.log", "id": "server", "has": ["info"]}]

@@ -1,0 +1,1 @@
+[{"name": "HistorySavePath_powershell.log", "id": "HistorySavePath_powershell", "has": ["info", "detection", "table"]}, {"name": "delete_pwh_history_file.log", "id": "delete_pwh_history_file", "has": ["info", "detection", "table"]}]

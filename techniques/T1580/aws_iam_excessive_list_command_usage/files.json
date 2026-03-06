@@ -1,0 +1,1 @@
+[{"name": "aws_iam_excessive_list_command_usage.json", "id": "aws_iam_excessive_list_command_usage", "has": ["info", "detection", "table"]}]

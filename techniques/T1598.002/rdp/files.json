@@ -1,0 +1,1 @@
+[{"name": "mstsc_rdpfile-windows-sysmon.log", "id": "mstsc_rdpfile-windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

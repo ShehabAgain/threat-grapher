@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_shred.log", "id": "auditd_proctitle_shred", "has": ["info"]}, {"name": "linux_auditd_shred.log", "id": "linux_auditd_shred", "has": ["info"]}]

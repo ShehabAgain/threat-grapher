@@ -1,0 +1,1 @@
+[{"name": "windows-security.log", "id": "windows-security", "has": ["info", "full", "simple", "detection", "table"]}]

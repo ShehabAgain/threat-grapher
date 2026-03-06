@@ -1,0 +1,1 @@
+[{"name": "download_to_pipe_exec.log", "id": "download_to_pipe_exec", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "download_to_pipe_exec_linux.log", "id": "download_to_pipe_exec_linux", "has": ["info", "full", "simple", "detection", "table"]}]

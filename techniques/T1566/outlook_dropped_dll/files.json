@@ -1,0 +1,1 @@
+[{"name": "outlook_file_created_cve.log", "id": "outlook_file_created_cve", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "outlook_phishing_form_dll.log", "id": "outlook_phishing_form_dll", "has": ["info", "full", "simple", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "blackbyte_sysmon.log", "id": "blackbyte_sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "longpath_sysmon.log", "id": "longpath_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

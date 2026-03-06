@@ -1,0 +1,1 @@
+[{"name": "seaarch-indexer-non-service.log", "id": "seaarch-indexer-non-service", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "searchindexer-security.log", "id": "searchindexer-security", "has": ["info", "detection", "table"]}]

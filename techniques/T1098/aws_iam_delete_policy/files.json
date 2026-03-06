@@ -1,0 +1,1 @@
+[{"name": "amazon_security_lake.json", "id": "amazon_security_lake", "has": ["info", "detection", "table"]}, {"name": "asl_ocsf_cloudtrail.json", "id": "asl_ocsf_cloudtrail", "has": ["info", "detection", "table"]}, {"name": "aws_iam_delete_policy.json", "id": "aws_iam_delete_policy", "has": ["info", "detection", "table"]}]

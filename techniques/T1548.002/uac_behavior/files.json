@@ -1,0 +1,1 @@
+[{"name": "uac_behavior_sysmon.log", "id": "uac_behavior_sysmon", "has": ["info", "simple", "detection", "table"]}]

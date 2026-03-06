@@ -1,0 +1,1 @@
+[{"name": "auditpol_tampering_security.log", "id": "auditpol_tampering_security", "has": ["info", "detection", "table"]}, {"name": "auditpol_tampering_sysmon.log", "id": "auditpol_tampering_sysmon", "has": ["info", "simple", "detection", "table"]}]

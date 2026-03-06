@@ -1,0 +1,1 @@
+[{"name": "o365_add_service_principal.log", "id": "o365_add_service_principal", "has": ["info", "detection", "table"]}, {"name": "o365_added_service_principal.json", "id": "o365_added_service_principal", "has": ["info", "detection", "table"]}]

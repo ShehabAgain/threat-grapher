@@ -1,0 +1,1 @@
+[{"name": "invokesqlcmd_powershell.log", "id": "invokesqlcmd_powershell", "has": ["info"]}, {"name": "sqlcmd_windows_sysmon.log", "id": "sqlcmd_windows_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

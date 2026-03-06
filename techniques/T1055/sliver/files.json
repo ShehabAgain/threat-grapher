@@ -1,0 +1,1 @@
+[{"name": "T1055_windows-sysmon.log", "id": "T1055_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "notepad_windows-sysmon.log", "id": "notepad_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "sliver_windows-system.log", "id": "sliver_windows-system", "has": ["info", "detection", "table"]}]

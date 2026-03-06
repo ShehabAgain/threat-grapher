@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_chmod.log", "id": "auditd_proctitle_chmod", "has": ["info"]}, {"name": "linux_auditd_chmod_exec_attrib.log", "id": "linux_auditd_chmod_exec_attrib", "has": ["info"]}]

@@ -1,0 +1,1 @@
+[{"name": "kubernetes_audit_pull_image.json", "id": "kubernetes_audit_pull_image", "has": ["info", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "azure_ad_user_consent_granted.log", "id": "azure_ad_user_consent_granted", "has": ["info", "detection", "table"]}]

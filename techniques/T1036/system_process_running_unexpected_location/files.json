@@ -1,0 +1,1 @@
+[{"name": "dotnet_lolbin-windows-security.log", "id": "dotnet_lolbin-windows-security", "has": ["info", "detection", "table"]}, {"name": "lolbas_dataset.log", "id": "lolbas_dataset", "has": ["info", "detection", "table"]}, {"name": "windows-security.log", "id": "windows-security", "has": ["info", "detection", "table"]}]

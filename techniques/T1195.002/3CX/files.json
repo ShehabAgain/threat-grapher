@@ -1,0 +1,1 @@
+[{"name": "3cx_4688_windows-security.log", "id": "3cx_4688_windows-security", "has": ["info", "detection", "table"]}, {"name": "3cx_network-windows-sysmon.log", "id": "3cx_network-windows-sysmon", "has": ["info", "detection", "table"]}, {"name": "3cx_windows-sysmon.log", "id": "3cx_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

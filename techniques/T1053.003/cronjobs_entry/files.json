@@ -1,0 +1,1 @@
+[{"name": "sysmon_linux.log", "id": "sysmon_linux", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "sysmon_linux_cron_append.log", "id": "sysmon_linux_cron_append", "has": ["info", "full", "simple", "detection", "table"]}]

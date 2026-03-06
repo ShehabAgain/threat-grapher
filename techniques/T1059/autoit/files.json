@@ -1,0 +1,1 @@
+[{"name": "cab_files.log", "id": "cab_files", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "sysmon.log", "id": "sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "windbg_autoit.log", "id": "windbg_autoit", "has": ["info", "full", "simple", "detection", "table"]}]

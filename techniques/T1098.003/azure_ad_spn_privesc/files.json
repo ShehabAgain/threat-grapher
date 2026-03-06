@@ -1,0 +1,1 @@
+[{"name": "azure_ad_spn_privesc.log", "id": "azure_ad_spn_privesc", "has": ["info", "detection", "table"]}]

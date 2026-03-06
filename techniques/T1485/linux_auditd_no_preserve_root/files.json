@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_rm_rf.log", "id": "auditd_proctitle_rm_rf", "has": ["info"]}, {"name": "linux_auditd_no_preserve_root.log", "id": "linux_auditd_no_preserve_root", "has": ["info"]}]

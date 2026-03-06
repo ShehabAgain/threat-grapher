@@ -1,0 +1,1 @@
+[{"name": "msexchangehmworker_windows-sysmon.log", "id": "msexchangehmworker_windows-sysmon", "has": ["info"]}, {"name": "proxyshell-risk.log", "id": "proxyshell-risk", "has": ["info"]}, {"name": "proxyshell.log", "id": "proxyshell", "has": ["info", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "kubernetes_privileged_pod.json", "id": "kubernetes_privileged_pod", "has": ["info", "detection", "table"]}]

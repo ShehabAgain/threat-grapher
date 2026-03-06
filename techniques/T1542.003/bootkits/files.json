@@ -1,0 +1,1 @@
+[{"name": "network-winlogon-windows-sysmon.log", "id": "network-winlogon-windows-sysmon", "has": ["info", "full", "detection", "table"]}]

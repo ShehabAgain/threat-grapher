@@ -1,0 +1,1 @@
+[{"name": "auditd_proctitle_service_restart.log", "id": "auditd_proctitle_service_restart", "has": ["info"]}, {"name": "linux_services_restart.log", "id": "linux_services_restart", "has": ["info"]}]

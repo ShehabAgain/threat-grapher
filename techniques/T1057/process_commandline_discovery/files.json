@@ -1,0 +1,1 @@
+[{"name": "wmic-cmdline-sysmon.log", "id": "wmic-cmdline-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "wmic-get-cmdline-security.log", "id": "wmic-get-cmdline-security", "has": ["info", "detection", "table"]}]

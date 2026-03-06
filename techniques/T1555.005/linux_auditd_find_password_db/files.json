@@ -1,0 +1,1 @@
+[{"name": "auditd_execve_pwd_mgr.log", "id": "auditd_execve_pwd_mgr", "has": ["info"]}, {"name": "linux_auditd_find_password_db.log", "id": "linux_auditd_find_password_db", "has": ["info"]}]

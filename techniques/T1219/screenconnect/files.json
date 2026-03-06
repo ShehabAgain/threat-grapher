@@ -1,0 +1,1 @@
+[{"name": "screenconnect_palo.log", "id": "screenconnect_palo", "has": ["info"]}, {"name": "screenconnect_palo_traffic.log", "id": "screenconnect_palo_traffic", "has": ["info"]}, {"name": "screenconnect_sysmon.log", "id": "screenconnect_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

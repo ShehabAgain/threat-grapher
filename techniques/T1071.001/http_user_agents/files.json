@@ -1,0 +1,1 @@
+[{"name": "suricata_c2.log", "id": "suricata_c2", "has": ["info", "detection", "table"]}, {"name": "suricata_malware.log", "id": "suricata_malware", "has": ["info", "detection", "table"]}, {"name": "suricata_pua.log", "id": "suricata_pua", "has": ["info", "detection", "table"]}, {"name": "suricata_rmm.log", "id": "suricata_rmm", "has": ["info", "detection", "table"]}]

@@ -1,0 +1,1 @@
+[{"name": "ssl_splunk.log", "id": "ssl_splunk", "has": ["info", "detection", "table"]}]

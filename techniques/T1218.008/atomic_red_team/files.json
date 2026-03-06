@@ -1,0 +1,1 @@
+[{"name": "odbcconf-windows-security.log", "id": "odbcconf-windows-security", "has": ["info", "detection", "table"]}, {"name": "windows-sysmon-odbc-regsvr.log", "id": "windows-sysmon-odbc-regsvr", "has": ["info", "detection", "table"]}, {"name": "windows-sysmon-odbc-rsp.log", "id": "windows-sysmon-odbc-rsp", "has": ["info", "full", "detection", "table"]}]

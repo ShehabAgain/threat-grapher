@@ -1,0 +1,1 @@
+[{"name": "o365_add_federated_domain.log", "id": "o365_add_federated_domain", "has": ["info", "detection", "table"]}, {"name": "o365_new_federated_domain_added.json", "id": "o365_new_federated_domain_added", "has": ["info", "detection", "table"]}]

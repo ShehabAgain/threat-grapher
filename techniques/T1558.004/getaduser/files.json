@@ -1,0 +1,1 @@
+[{"name": "get-aduser-powershell.log", "id": "get-aduser-powershell", "has": ["info", "detection", "table"]}, {"name": "windows-powershell.log", "id": "windows-powershell", "has": ["info", "detection", "table"]}, {"name": "windows-security.log", "id": "windows-security", "has": ["info", "detection", "table"]}]

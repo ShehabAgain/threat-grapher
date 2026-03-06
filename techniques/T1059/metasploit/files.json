@@ -1,0 +1,1 @@
+[{"name": "apachebench_windows-sysmon.log", "id": "apachebench_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "msf.powershell.powershell.log", "id": "msf_powershell_powershell", "has": ["info", "detection", "table"]}]

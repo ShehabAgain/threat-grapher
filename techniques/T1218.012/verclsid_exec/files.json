@@ -1,0 +1,1 @@
+[{"name": "sysmon.log", "id": "sysmon", "has": ["info", "full", "detection", "table"]}]

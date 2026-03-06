@@ -1,0 +1,1 @@
+[{"name": "cisco_ios.log", "id": "cisco_ios", "has": ["info"]}, {"name": "ciscocve202320198.log", "id": "ciscocve202320198", "has": ["info", "detection", "table"]}, {"name": "stream_tcp.log", "id": "stream_tcp", "has": ["info", "detection", "table"]}]

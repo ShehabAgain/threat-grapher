@@ -1,0 +1,1 @@
+[{"name": "njrat_firewall_security.log", "id": "njrat_firewall_security", "has": ["info", "detection", "table"]}, {"name": "njrat_firewall_sysmon.log", "id": "njrat_firewall_sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

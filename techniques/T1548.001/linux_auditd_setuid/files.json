@@ -1,0 +1,1 @@
+[{"name": "auditd_execve_setcap.log", "id": "auditd_execve_setcap", "has": ["info"]}, {"name": "auditd_proctitle_setuid.log", "id": "auditd_proctitle_setuid", "has": ["info"]}, {"name": "linux_auditd_setcap_priv.log", "id": "linux_auditd_setcap_priv", "has": ["info"]}, {"name": "linux_auditd_setuid.log", "id": "linux_auditd_setuid", "has": ["info"]}]

@@ -1,0 +1,1 @@
+[{"name": "authkey_linux-sysmon.log", "id": "authkey_linux-sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "sysmon_linux.log", "id": "sysmon_linux", "has": ["info", "full", "simple", "detection", "table"]}]

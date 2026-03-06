@@ -1,0 +1,1 @@
+[{"name": "pingid.log", "id": "pingid", "has": ["info", "detection", "table"]}, {"name": "windows_pw_reset.log", "id": "windows_pw_reset", "has": ["info", "detection", "table"]}]

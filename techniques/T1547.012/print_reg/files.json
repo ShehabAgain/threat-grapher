@@ -1,0 +1,1 @@
+[{"name": "sysmon.log", "id": "sysmon", "has": ["info", "full", "simple", "detection", "table"]}, {"name": "sysmon_print.log", "id": "sysmon_print", "has": ["info", "full", "detection", "table"]}, {"name": "windows-xml.log", "id": "windows-xml", "has": ["info", "full", "detection", "table"]}]

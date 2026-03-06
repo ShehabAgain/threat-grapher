@@ -1,0 +1,1 @@
+[{"name": "aws_ecr_scanning_findings_events.json", "id": "aws_ecr_scanning_findings_events", "has": ["info", "detection", "table"]}]

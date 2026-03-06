@@ -1,0 +1,1 @@
+[{"name": "o365_exchange_suspect_events.log", "id": "o365_exchange_suspect_events", "has": ["info", "detection", "table"]}, {"name": "o365_messagetrace_suspect_events.log", "id": "o365_messagetrace_suspect_events", "has": ["info", "detection", "table"]}]

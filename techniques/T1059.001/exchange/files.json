@@ -1,0 +1,1 @@
+[{"name": "msexchangemanagement.log", "id": "msexchangemanagement", "has": ["info", "detection", "table"]}, {"name": "windows-powershell.log", "id": "windows-powershell", "has": ["info", "detection", "table"]}]

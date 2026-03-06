@@ -1,0 +1,1 @@
+[{"name": "splk_protocol_impersonation_weak_encryption_simplerequest.log", "id": "splk_protocol_impersonation_weak_encryption_simplerequest", "has": ["info"]}, {"name": "splunk_protocol_impersonation_weak_encryption_selfsigned.log", "id": "splunk_protocol_impersonation_weak_encryption_selfsigned", "has": ["info"]}]

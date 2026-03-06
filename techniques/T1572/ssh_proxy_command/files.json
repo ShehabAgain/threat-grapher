@@ -1,0 +1,1 @@
+[{"name": "sshproxycommand_windows-sysmon.log", "id": "sshproxycommand_windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

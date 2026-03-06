@@ -1,0 +1,1 @@
+[{"name": "clear_evt.log", "id": "clear_evt", "has": ["info", "detection", "table"]}, {"name": "disable_evt.log", "id": "disable_evt", "has": ["info", "detection", "table"]}, {"name": "windows-security.log", "id": "windows-security", "has": ["info", "detection", "table"]}]

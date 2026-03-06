@@ -1,0 +1,1 @@
+[{"name": "asl_ocsf_cloudtrail.json", "id": "asl_ocsf_cloudtrail", "has": ["info", "detection", "table"]}, {"name": "cloudtrail.json", "id": "cloudtrail", "has": ["info", "detection", "table"]}]

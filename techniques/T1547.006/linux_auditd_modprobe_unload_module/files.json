@@ -1,0 +1,1 @@
+[{"name": "auditd_execve_modprobe.log", "id": "auditd_execve_modprobe", "has": ["info"]}, {"name": "linux_auditd_modprobe_unload_module.log", "id": "linux_auditd_modprobe_unload_module", "has": ["info"]}]

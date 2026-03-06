@@ -1,0 +1,1 @@
+[{"name": "kubernetes_audit_daemonset_created.json", "id": "kubernetes_audit_daemonset_created", "has": ["info", "detection", "table"]}]

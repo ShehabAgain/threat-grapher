@@ -1,0 +1,1 @@
+[{"name": "kubernetes_audit_cron_job_creation.json", "id": "kubernetes_audit_cron_job_creation", "has": ["info", "detection", "table"]}]

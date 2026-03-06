@@ -1,0 +1,1 @@
+[{"name": "crushftp.log", "id": "crushftp", "has": ["info"]}, {"name": "crushftp11_session.log", "id": "crushftp11_session", "has": ["info"]}, {"name": "windows-sysmon.log", "id": "windows-sysmon", "has": ["info", "full", "simple", "detection", "table"]}]

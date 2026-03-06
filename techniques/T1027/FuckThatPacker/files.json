@@ -1,0 +1,1 @@
+[{"name": "aurora-edr.log", "id": "aurora-edr", "has": ["info", "detection", "table"]}, {"name": "windows-powershell.log", "id": "windows-powershell", "has": ["info"]}]

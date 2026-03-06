@@ -1,0 +1,1 @@
+[{"name": "windows-appxpackaging.log", "id": "windows-appxpackaging", "has": ["info", "detection", "table"]}, {"name": "windows_appxdeploymentserver.log", "id": "windows_appxdeploymentserver", "has": ["info", "detection", "table"]}]
